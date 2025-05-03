@@ -1,4 +1,4 @@
-🚖 NYC Taxi Data Exploratory Analysis
+NYC Taxi Data Exploratory Analysis
 A comprehensive data analysis framework using Apache Spark and Jupyter Notebook for exploring and analyzing NYC Taxi trip data.
 
 Project Overview
