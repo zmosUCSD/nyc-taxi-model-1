@@ -1,32 +1,31 @@
-🚖 NYC Taxi Trip Data - Spark-Based Exploratory Data Analysis
+🚖 NYC Taxi Data Exploratory Analysis
+A comprehensive data analysis framework using Apache Spark and Jupyter Notebook for exploring and analyzing NYC Taxi trip data.
 
-This project performs exploratory data analysis (EDA) on the NYC Yellow Taxi dataset using PySpark within a Jupyter Notebook. The workflow involves downloading raw taxi trip data, preprocessing it, and generating insights about trip patterns, fare dynamics, and temporal distributions.
+Project Overview
+This repository contains a Spark-based exploratory data analysis of the NYC Yellow Taxi dataset. The analysis focuses on understanding trip patterns, fare structures, tipping behavior, and other insights from the taxi data.
 
-Approach and Methodology
-We set up a Spark-based exploratory data analysis environment for the NYC Taxi dataset. The approach followed these key steps:
+Approach:
 
-Environment Setup: Configured an optimized Spark session with appropriate memory allocations and performance parameters.
-Data Loading: Loaded the NYC Taxi trip data in Parquet format, which offers better performance than CSV for Spark processing.
-Feature Engineering: Created derived features including:
+1. Environment Setup
+  
+2. Data Engineering
 
-Temporal dimensions (hour, day, month, year)
-Trip characteristics (duration, speed)
-Financial metrics (tip percentage)
-Categorical variables (time of day, weekend indicator)
+Data Ingestion Method: Parquet format for optimized performance
+Feature Engineering: Created temporal, spatial, and financial derived features
+Data Cleaning: Removed outliers and invalid records
 
+3. Analysis Components
 
-Data Cleaning: Filtered out anomalies and extreme values to ensure data quality, removing records with unrealistic trip distances, fares, passenger counts, and speeds.
-Exploratory Analysis: Conducted multi-dimensional analysis examining:
+Temporal Analysis: Patterns by hour, day, month, and weekday vs. weekend
+Financial Analysis: Fare structure and tipping behavior
+Trip Characteristics: Distance, duration, and speed relationships
+Geospatial Analysis: Pickup and dropoff location patterns
 
-Temporal patterns (hourly, daily, weekday vs. weekend)
-Financial patterns (fare and tip relationships)
-Trip characteristics (distance, duration, speed)
+4. Visualization
+Various visualizations to understand patterns in the data:
 
-
-Visualization: Created visualizations including:
-
-Time series plots of trip metrics by hour
-Distribution histograms of key variables
-Correlation analysis between metrics
-Comparative analysis (weekday vs. weekend)
+Trip distribution by hour
+Fare amount relationships
+Weekday vs. weekend comparisons
+Correlation analysis
 
