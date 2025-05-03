@@ -21,7 +21,7 @@ This repository provides a Spark-based exploratory data analysis (EDA) of the NY
 ### 1. Environment Setup
 
 - Apache Spark and PySpark configured within a Jupyter Notebook environment
-- Compatible with both local and distributed deployments (e.g., Databricks, AWS EMR)
+- Enabled with distributed setup and runs only in SDSC Cluster
 
 ### 2. Data Engineering
 
