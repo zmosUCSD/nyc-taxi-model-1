@@ -151,7 +151,6 @@ jupyter notebook
 
 - Interactive dashboard using Plotly Dash
 - Advanced geospatial analysis using H3 or GeoPandas
-- Expand to green/bike/for-hire vehicle datasets
 - Prediction Models using ML for predicting Tips/Fares/Future ussage patterns, expected demand etc
 
 ---
