@@ -1,6 +1,6 @@
 # 🚖 NYC Taxi Data Exploratory Analysis
 
-A comprehensive data analysis framework using **Apache Spark** and **Jupyter Notebook** for exploring and analyzing NYC Yellow Taxi trip data.
+A comprehensive data analysis framework using **Apache Spark** and **Jupyter Notebook** for exploring and analyzing NYC Yellow Taxi trip data from 2014 through 2024.
 
 ---
 
@@ -12,7 +12,7 @@ This repository provides a Spark-based exploratory data analysis (EDA) of the NY
 - Fare structures
 - Tipping behavior
 - Operational trends
-- Urban mobility insights
+- Urban mobility insights over the past decade
 
 ---
 
@@ -21,74 +21,66 @@ This repository provides a Spark-based exploratory data analysis (EDA) of the NY
 ### 1. Environment Setup
 
 - Apache Spark and PySpark configured within a Jupyter Notebook environment
-- Suitable for both local and distributed (e.g., EMR, Databricks) deployments
+- Compatible with both local and distributed deployments (e.g., Databricks, AWS EMR)
 
 ### 2. Data Engineering
 
-- **Data Ingestion**: NYC Yellow Taxi data (Jan–Mar 2023) downloaded in Parquet format for efficient Spark-based processing
+- **Data Ingestion**: NYC Yellow Taxi trip data (2014–2024, all months) in Parquet format
 - **Feature Engineering**:
   - Temporal features (hour, day, month, weekday/weekend)
-  - Trip speed, tip percentage, duration
+  - Trip metrics like speed, duration, tip percentage
 - **Data Cleaning**:
-  - Removed trips with invalid or zero distance, fare, or duration
-  - Filtered outliers using logical thresholds
+  - Removal of invalid trips (e.g., 0 distance/fare)
+  - Filtering outliers and noisy records
 
 ### 3. Analysis Components
 
 #### 📅 Temporal Analysis
-- Trip count by hour, day of week, and month
-- Weekday vs. weekend usage comparison
-- Identification of peak demand hours
+- Hourly, daily, and monthly trip trends
+- Year-over-year change tracking
+- Weekday vs. weekend usage patterns
 
 #### 💰 Financial Analysis
-- Fare amount vs. trip distance and duration
-- Tipping behavior by time of day and passenger count
-- Distribution of tip percentages
+- Fare vs. trip distance/time correlation
+- Tipping trends and tip percentage distribution
+- Fare dynamics based on passenger count and trip type
 
 #### 🚕 Trip Characteristics
-- Distance and duration distribution
-- Average and peak speeds by hour
-- Categorization of trips (short, medium, long)
+- Trip speed analysis by hour
+- Distance/duration categorization (short, medium, long)
+- Temporal effects on trip length
 
-#### 🗺️ Geospatial Analysis *(Optional/Future Work)*
-- Pickup/dropoff hotspot clustering
-- Geographical correlation with fares and trip counts
+#### 🗺️ Geospatial Analysis *(Planned/Future Work)*
+- Pickup/dropoff clustering
+- High-density zones and airport corridors
 
 ---
 
 ## 📊 Visualization Highlights
 
-Visuals generated via Pandas + Matplotlib/Seaborn (after `.toPandas()` conversion from Spark):
-
-- Trip volume distribution by hour
-- Fare amount vs. distance scatter plot
-- Tip % vs. time of day
-- Correlation heatmaps
-- Weekday vs. weekend comparison charts
+- Hourly and weekly trip distribution
+- Fare vs. distance scatter plots
+- Tip percentage histograms and time-of-day analysis
+- Correlation heatmaps of trip features
 
 ---
 
 ## ❓ Key Exploratory Questions
 
-### 📅 Temporal Patterns
-- How do trips vary by hour, weekday, and month?
-- Are there behavioral differences in weekdays vs. weekends?
-- How has COVID-19 impacted trip patterns (pre/post-pandemic)?
-- What are the busiest taxi hours?
+### Temporal Patterns
+- How do taxi usage patterns vary across time of day, day of week, and year?
+- What are the busiest hours for NYC taxis?
+- How has usage changed post-COVID compared to pre-pandemic years?
 
-### 💸 Financial Insights
-- What factors drive fare amount?
-- How does tipping vary with time or passenger count?
-- Is there a correlation between trip distance and tip percentage?
+### Financial Insights
+- What are the strongest predictors of fare amount?
+- When are riders more likely to tip?
+- Do trip distance and passenger count influence tips?
 
-### 🧭 Operational Insights
-- Average speed during rush vs. off-peak hours
-- Trip distance distribution (short, medium, long)
-- Seasonal patterns in duration and distance
-- Breakdown of trip categories:
-  - **Short**: 0–2 mi
-  - **Medium**: 2–10 mi
-  - **Long**: >10 mi
+### Operational Insights
+- What’s the average taxi speed across different times?
+- How do trip durations and distances vary seasonally?
+- What share of rides are short (<2 mi), medium (2–10 mi), and long (>10 mi)?
 
 ---
 
@@ -97,15 +89,86 @@ Visuals generated via Pandas + Matplotlib/Seaborn (after `.toPandas()` conversio
 ```text
 nyc-taxi-eda/
 ├── nyc_taxi_eda.ipynb        # Main Jupyter Notebook for Spark-based EDA
-├── nyc_taxi_data/            # Folder to store downloaded Parquet files
+├── nyc_taxi_data/            # Folder for downloaded Parquet trip data
 ├── README.md                 # Project overview and documentation
-└── requirements.txt          # Python dependencies (optional)
+├── requirements.txt          # Python dependencies (optional)
+└── environment.yml           # Conda environment file (optional)
+```
 
-## Data Sources
+---
 
-https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_[2024-2014].[01-12]parquet
+## 📎 Data Source
 
+This project uses publicly available NYC Yellow Taxi data published by the NYC Taxi & Limousine Commission (TLC).
 
+- **Official TLC page**:  
+  https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
+
+- **Parquet file archive (2014–2024)**:  
+  All monthly files accessed via CloudFront CDN:  
+  ```
+  https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_[2014-2024].[01-12].parquet
+  ```
+
+- **File Format**: Parquet (columnar, efficient for Spark)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
 git clone https://github.com/rvasappa-ucsd/nyc-taxi-eda.git
 cd nyc-taxi-eda
+```
 
+### 2. Set Up the Environment
+
+Using Conda:
+
+```bash
+conda env create -f environment.yml
+conda activate nyc-taxi-eda
+```
+
+Using pip:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Launch the Notebook
+
+```bash
+jupyter notebook
+# Open nyc_taxi_eda.ipynb and run cells
+```
+
+---
+
+## 📈 Future Enhancements
+
+- Interactive dashboard using Plotly Dash or Streamlit
+- Advanced geospatial analysis using H3 or GeoPandas
+- Expand to green/bike/for-hire vehicle datasets
+
+---
+
+## 👩‍💻 Authors
+
+This project is developed by students at **UC San Diego**:
+
+- **Harsh Arya** — harya@ucsd.edu  
+- **Gabrielle Despaigne** — gdespaigne@ucsd.edu  
+- **Zack Mosley** — zmosley@ucsd.edu  
+- **Camila Paik** — capaik@ucsd.edu  
+- **Raghav Vasappanavara** — rvasappanavara@ucsd.edu
+
+---
+
+## 📄 License
+
+This repository is for educational and research purposes. Data is publicly available and governed by NYC TLC data usage policies.
+
+---
