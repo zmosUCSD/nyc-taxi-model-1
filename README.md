@@ -99,8 +99,7 @@ nyc-taxi-eda/
 ├── nyc_taxi_eda.ipynb        # Main Jupyter Notebook for Spark-based EDA
 ├── nyc_taxi_data/            # Folder to store downloaded Parquet files
 ├── README.md                 # Project overview and documentation
-├── requirements.txt          # Python dependencies (optional)
-└── environment.yml           # Conda environment file (optional)
+└── requirements.txt          # Python dependencies (optional)
 
 ## Data Sources
 
