@@ -91,8 +91,7 @@ nyc-taxi-eda/
 ├── nyc_taxi_eda.ipynb        # Main Jupyter Notebook for Spark-based EDA
 ├── nyc_taxi_data/            # Folder for downloaded Parquet trip data
 ├── README.md                 # Project overview and documentation
-├── requirements.txt          # Python dependencies (optional)
-└── environment.yml           # Conda environment file (optional)
+└── requirements.txt           # Python dependencies (optional)
 ```
 
 ---
@@ -116,7 +115,7 @@ This project uses publicly available NYC Yellow Taxi data published by the NYC T
 
 ## 🚀 Getting Started
 
-### 1. Run the jupyter notebook in SDSC Cluster
+### Run the jupyter notebook in SDSC Cluster
 
 Run the jupyter notebook at : /home/rvasappanavara/rvasappanavara/shared/nyc_taxi_eda.ipynb
 
