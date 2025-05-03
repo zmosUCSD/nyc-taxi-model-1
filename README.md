@@ -87,9 +87,26 @@ Set up Spark and Jupyter environment either locally or on a distributed cluster 
 
 ## 📂 Repository Structure
 
-├── nyc_taxi_eda.ipynb # Main notebook for analysis
-├── nyc_taxi_data # Local directory for downloaded Parquet data
-├── README.md # Project summary
-└── requirements.txt # Dependencies (optional)
+<pre> nyc-taxi-eda/ ├── nyc_taxi_eda.ipynb # Main Jupyter Notebook for Spark-based EDA ├── nyc_taxi_data/ # Folder to store downloaded Parquet files ├── README.md # Project overview and documentation ├── requirements.txt # Python dependencies (optional) └── environment.yml # Conda environment file (optional) </pre>
+
+---
+
+## 📎 Data Source
+
+NYC Taxi and Limousine Commission (TLC):  
+🔗 [https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+
+Parquet files used:  
+🔗 `yellow_tripdata_2022-01.parquet`, `yellow_tripdata_2022-02.parquet`, `yellow_tripdata_2022-03.parquet`
+
+---
+
+## 🚀 Getting Started
+
+1. Clone this repo  
+   ```bash
+   git clone https://github.com/rvasappa-ucsd/nyc-taxi-eda.git
+   cd nyc-taxi-eda
+2. Launch Jupyter Notebook in SDSC Portal and run nyc_taxi_eda.ipynb
 
 
