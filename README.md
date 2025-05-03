@@ -116,34 +116,9 @@ This project uses publicly available NYC Yellow Taxi data published by the NYC T
 
 ## 🚀 Getting Started
 
-### 1. Clone the Repository
+### 1. Run the jupyter notebook in SDSC Cluster
 
-```bash
-git clone https://github.com/rvasappa-ucsd/nyc-taxi-eda.git
-cd nyc-taxi-eda
-```
-
-### 2. Set Up the Environment
-
-Using Conda:
-
-```bash
-conda env create -f environment.yml
-conda activate nyc-taxi-eda
-```
-
-Using pip:
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Launch the Notebook
-
-```bash
-jupyter notebook
-# Open nyc_taxi_eda.ipynb and run cells
-```
+Run the jupyter notebook at : /home/rvasappanavara/rvasappanavara/shared/nyc_taxi_eda.ipynb
 
 ---
 
