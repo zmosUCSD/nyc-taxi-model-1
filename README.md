@@ -157,7 +157,7 @@ jupyter notebook
 
 ## 👩‍💻 Authors
 
-This project is developed by students at **UC San Diego**:
+This project is developed by students at **UC San Diego** as part of 232-R Group Project Spring Semester:
 
 - **Harsh Arya** — harya@ucsd.edu  
 - **Gabrielle Despaigne** — gdespaigne@ucsd.edu  
