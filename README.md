@@ -125,7 +125,7 @@ Run the jupyter notebook at : /home/rvasappanavara/rvasappanavara/shared/nyc_tax
 
 - Interactive dashboard using Plotly Dash
 - Advanced geospatial analysis using H3 or GeoPandas
-- Prediction Models using ML for predicting Tips/Fares/Future ussage patterns, expected demand etc
+- Prediction Models using ML for predicting Tips/Fares/Future usage patterns, expected demand etc
 
 ---
 
