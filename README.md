@@ -149,7 +149,29 @@ Key model characteristics:
   - max_depth = 10
   - learning_rate = 0.2
 - Split Strategy: 80/20 stratified split based on a seeded random distribution across Dask partitions
+  
 We observed that trip distance and duration had the highest impact on prediction quality, consistent with NYC’s metered pricing system. Tolls also contributed significantly to variance, particularly for airport trips or bridge-heavy routes.
+### d. Model Evaluation Results
+The performance of both models was evaluated using standard regression metrics: Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), and R² (Coefficient of Determination).
+
+| Metric       | Linear Regression | LightGBM (Train) | LightGBM (Test) |
+| ------------ | ----------------- | ---------------- | --------------- |
+| **RMSE**     | \~5.24            | 2.55             | **2.66**        |
+| **MAE**      | \~3.95            | 1.85             | **1.91**        |
+| **R² Score** | \~0.74            | 0.9396           | **0.9371**      |
+
+
+**Interpretation of Results:**
+- LightGBM significantly outperformed the baseline linear model across all metrics, especially in reducing RMSE and MAE.
+- Test RMSE of 2.66 implies that on average, the predicted fare deviates by about $2.66 from the actual fare.
+  
+Considering the average fare across our dataset is ~$15.34:
+- RMSE is only ~17.3% of the average fare
+- MAE is just ~12.5%, indicating highly precise predictions
+
+The high R² (93.7%) means the model explains most of the variance in fare pricing, making it reliable even in real-world deployment scenarios.
+
+
 ---
 ## 📂 Repository Structure
 
