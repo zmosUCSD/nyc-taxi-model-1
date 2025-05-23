@@ -84,6 +84,73 @@ This repository provides a Spark-based exploratory data analysis (EDA) of the NY
 
 ---
 
+## 🚕📈 Model 1: Fare Prediction Model
+
+### a. Overview 
+The goal of this model is to accurately predict the fare amount for NYC Yellow Taxi rides from 2020 to 2024 based on key trip features available at the time of pickup. These include trip distance, duration, tolls, time of day, and passenger count, all of which influence how fares are calculated under NYC’s standard metered pricing rules. By leveraging Apache Spark and Dask, we trained a high-performing LightGBM regression model that handles over 150 million records. This model not only captures the complex relationships between trip variables and fare pricing but also generalizes well across a wide range of conditions and ride types.
+
+### b. Preprocessing & Feature Engineering
+To prepare the data for modeling, we implemented the following transformations:
+
+**Filtering**
+
+- Removed rows with fare_amount < $3 (below NYC minimum base fare) or fare_amount > $200 to eliminate invalid and extreme outliers.
+![image](https://github.com/user-attachments/assets/ab6c428d-2bd9-44c1-9089-82ff06f21fdb)
+
+_Histogram of fare amounts, showing common spikes at flat fares (e.g., $70 to JFK). This supports trimming extreme values._
+
+- Removed trips with:
+  - trip_distance ≤ 0 or > 35 miles (NYC city limits)
+  - trip_time_minutes ≤ 0 or > 1500 (≈25 hours, extreme outliers)
+
+- Kept only records with RatecodeID = 1, representing standard metered fares (~90% of all trips).
+- Clipped passenger_count to 1–5 based on NYC taxi regulations.
+  
+**Feature Engineering**
+
+- Extracted temporal features from pickup time:
+  - hour, dayofweek, month
+
+- Computed trip-level efficiency metrics:
+  - trip_time_minutes
+  - fare_per_mile, fare_per_minute
+
+- Excluded post-hoc features like tip_amount to prevent leakage during prediction.
+
+After all filtering and transformations, the dataset retained 88.55% of original data (~155M rows from 175M).
+
+### c. Modeling
+We began by benchmarking a simple linear model, followed by training a more powerful tree-based model using LightGBM on a large-scale distributed infrastructure.
+
+**🧠Linear Regression (Baseline Model)**
+
+Our baseline model was a multivariate linear regression trained using PySpark MLlib. It used a small set of core features known to influence fare calculation:
+- trip_distance: total miles traveled
+- trip_time_minutes: duration of the ride
+- tolls_amount: total tolls incurred
+- hour: time of day the trip started
+
+While this model provided a quick sanity check for feature importance and data health, its performance was limited due to its inability to capture non-linear relationships between variables (e.g., tipping points at certain times or distances). Residuals from this model showed underfitting, particularly in edge cases involving long trips or high tolls.
+
+**🧠LightGBM Regressor (Final Model)**
+
+To improve prediction accuracy, we used the LightGBM Regressor trained in a Dask environment. This allowed us to parallelize training across partitions and scale to the full dataset (over 150 million rows).
+
+Key model characteristics:
+
+- Framework: Dask-ML + LightGBM
+- Features Used:
+  - trip_distance
+  - trip_time_minutes
+  - tolls_amount
+  - hour
+- Training Configuration:
+  - n_estimators = 200
+  - max_depth = 10
+  - learning_rate = 0.2
+- Split Strategy: 80/20 stratified split based on a seeded random distribution across Dask partitions
+We observed that trip distance and duration had the highest impact on prediction quality, consistent with NYC’s metered pricing system. Tolls also contributed significantly to variance, particularly for airport trips or bridge-heavy routes.
+---
 ## 📂 Repository Structure
 
 ```text
