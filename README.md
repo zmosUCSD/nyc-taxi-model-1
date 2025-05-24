@@ -212,8 +212,20 @@ nyc-taxi-eda/
 ├── nyc_taxi_data/            # Folder for downloaded Parquet trip data
 ├── model_1_final.ipynb       # Main Jupyter Notebook for Model 1: Fare Prediction
 ├── README.md                 # Project overview and documentation
-└── requirements.txt           # Python dependencies (optional)
+└── requirements.txt          # Python dependencies (optional)
 ```
+
+### EDA in SDSC Cluster
+
+EDA: https://github.com/rvasappa-ucsd/nyc-taxi-eda/blob/main/nyc_taxi_eda.ipynb
+
+### Model 1, Fare Prediction Model
+
+Model 1: https://github.com/rvasappa-ucsd/nyc-taxi-eda/blob/Milestone3/model_1_final.ipynb
+
+### Model 2, Sentiment Analysis
+
+Model 2: coming soon
 
 ---
 
@@ -231,14 +243,6 @@ This project uses publicly available NYC Yellow Taxi data published by the NYC T
   ```
 
 - **File Format**: Parquet (columnar, efficient for Spark)
-
----
-
-## 🚀 Getting Started
-
-### Run the jupyter notebook in SDSC Cluster
-
-Run the jupyter notebook at : /home/rvasappanavara/rvasappanavara/shared/nyc_taxi_eda.ipynb
 
 ---
 
