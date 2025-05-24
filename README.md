@@ -131,6 +131,7 @@ We began by benchmarking a simple linear model, followed by training a more powe
 **🧠Linear Regression (Baseline Model)**
 
 Our baseline model was a multivariate linear regression trained using PySpark MLlib. It used a small set of core features known to influence fare calculation:
+
 - trip_distance: total miles traveled
 - trip_time_minutes: duration of the ride
 - tolls_amount: total tolls incurred
