@@ -209,9 +209,9 @@ Our tuned LightGBM regressor (Test RMSE: $2.66, MAE: $1.91, R²: 0.9371) deliver
 nyc-taxi-eda/
 ├── nyc_taxi_eda.ipynb        # Main Jupyter Notebook for Spark-based EDA
 ├── nyc_taxi_data/            # Folder for downloaded Parquet trip data
-├── [model_1_final.ipynb](https://github.com/rvasappa-ucsd/nyc-taxi-eda/blob/Milestone3/model_1_final.ipynb)       # Main Jupyter Notebook for Model 1: Fare Prediction
+├── [model_1_final.ipynb ](https://github.com/rvasappa-ucsd/nyc-taxi-eda/blob/Milestone3/model_1_final.ipynb)      # Main Jupyter Notebook for Model 1: Fare Prediction
 ├── README.md                 # Project overview and documentation
-└── requirements.txt           # Python dependencies (optional)
+└── requirements.txt          # Python dependencies (optional)
 ```
 
 ---
