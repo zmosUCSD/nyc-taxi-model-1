@@ -97,13 +97,17 @@ To prepare the data for modeling, we implemented the following transformations:
 **Filtering**
 
 - Removed rows with fare_amount < $3 (below NYC minimum base fare) or fare_amount > $200 to eliminate invalid and extreme outliers.
-![image](https://github.com/user-attachments/assets/ab6c428d-2bd9-44c1-9089-82ff06f21fdb)
 
-_Histogram of fare amounts, showing common spikes at flat fares (e.g., $70 to JFK). This supports trimming extreme values._
+![download (3)](https://github.com/user-attachments/assets/8f7abab6-b052-4ea4-8d68-a5ffa7831dcf)
+
+_Figure 1: Histogram of fare amounts, showing common spikes at flat fares (e.g., $70 to JFK). This supports trimming extreme values._
 
 - Removed trips with:
   - trip_distance ≤ 0 or > 35 miles (NYC city limits)
   - trip_time_minutes ≤ 0 or > 1500 (≈25 hours, extreme outliers)
+    
+![download (5)](https://github.com/user-attachments/assets/34cf691a-2a8c-4a80-bbf5-763464bf7d5b)
+_Figure 2: Trip distance distributions from a 10% sample, segmented by mileage bins. Most trips are short, with a sharp drop-off after 3 miles. This supports the filtering of trips > 35 miles as outliers._
 
 - Kept only records with RatecodeID = 1, representing standard metered fares (~90% of all trips).
 - Clipped passenger_count to 1–5 based on NYC taxi regulations.
@@ -174,6 +178,30 @@ Considering the average fare across our dataset is ~$15.34:
 
 The high R² (93.7%) means the model explains most of the variance in fare pricing, making it reliable even in real-world deployment scenarios.
 
+### e. Model Fit & Residual Analysis
+To assess generalization and identify possible weaknesses, we analyzed the model’s residuals:
+- Low variance: Training and test metrics were nearly identical, indicating no overfitting
+- Moderate bias: The model occasionally underpredicts fares for:
+  - Very long trips
+  - Trips at atypical hours
+  - Flat-fare scenarios (e.g., airports)
+- Overall error bounds: With a test MAE of ~$1.91, most predictions were within reasonable, real-world acceptable ranges
+
+![download (4)](https://github.com/user-attachments/assets/c946c92b-066c-4e7d-b940-17ff9f76cc07)
+_Figure 3: Residuals plotted against trip distance, time, and hour reveal slight underprediction on long or irregular trips, but overall consistency._
+
+### f. Opportunities for Improvement
+- Time-Aware Modeling:
+NYC fare structures change year-to-year. Training on only the most recent 1–2 years may capture current fare rules more accurately.
+
+- Incorporate External Features:
+Weather, traffic, and special events can influence both fare and trip time. These could help reduce errors on long or delayed trips.
+
+- Geospatial Modeling:
+Including pickup/dropoff zone clusters may help better account for flat-rate zones and congestion effects.
+
+### g. Final Thoughts
+Our tuned LightGBM regressor (Test RMSE: $2.66, MAE: $1.91, R²: 0.9371) delivers reliable, production-grade fare estimates. It captures both linear distance-fare trends and nonlinear effects like tolls and surcharges with minimal overfitting. With an RMSE of approximately ±17.3% and MAE of ±12.5% relative to the $15.34 average fare, the model provides a robust, generalizable solution for NYC taxi-fare prediction.
 
 ---
 ## 📂 Repository Structure
