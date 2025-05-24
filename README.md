@@ -1,6 +1,6 @@
-# 🚖 NYC Taxi Data Exploratory Analysis
+# 🚖 NYC Taxi Data: Exploratory and Predictive Modeling
 
-A comprehensive data analysis framework using **Apache Spark** and **Jupyter Notebook** for exploring and analyzing NYC Yellow Taxi trip data from 2014 through 2024.
+Using **Apache Spark** and over a decade of NYC Yellow Taxi trip data from 2014 to 2024, this project features several phases, including large-scale exploratory data analysis, the development of a fare prediction model, and sentiment analysis of rider experiences. This comprehensive framework examines patterns in urban mobility, fare structures, and customer satisfaction by integrating structured trip records with unstructured textual feedback. The result is a comprehensive perspective on the operational and experiential dimensions of New York City's taxi ecosystem.
 
 ---
 
@@ -127,6 +127,7 @@ We began by benchmarking a simple linear model, followed by training a more powe
 **🧠Linear Regression (Baseline Model)**
 
 Our baseline model was a multivariate linear regression trained using PySpark MLlib. It used a small set of core features known to influence fare calculation:
+
 - trip_distance: total miles traveled
 - trip_time_minutes: duration of the ride
 - tolls_amount: total tolls incurred
@@ -181,6 +182,7 @@ The high R² (93.7%) means the model explains most of the variance in fare prici
 nyc-taxi-eda/
 ├── nyc_taxi_eda.ipynb        # Main Jupyter Notebook for Spark-based EDA
 ├── nyc_taxi_data/            # Folder for downloaded Parquet trip data
+├── model_1_final.ipynb       # Main Jupyter Notebook for Model 1: Fare Prediction
 ├── README.md                 # Project overview and documentation
 └── requirements.txt           # Python dependencies (optional)
 ```
